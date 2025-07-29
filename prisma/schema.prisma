@@ -6,3 +6,39 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum MovimentType {
+  INPUT
+  OUTPUT
+}
+
+model Bank {
+  id       Int        @id @default(autoincrement())
+  name     String     @db.VarChar(70)
+  code     String     @db.VarChar(10)
+  moviment Moviment[]
+}
+
+model Account {
+  id         Int        @id @default(autoincrement())
+  email      String     @unique
+  password   String
+  created_at DateTime   @default(now())
+  updated_at DateTime   @updatedAt
+  moviment   Moviment[]
+}
+
+model Moviment {
+  id          Int      @id @default(autoincrement())
+  description String   @db.VarChar(100)
+  period      String?  @db.VarChar(25)
+  pay_date    DateTime @db.Date
+  value       String
+  completed   Boolean  @default(false)
+
+  type      MovimentType
+  bank      Bank         @relation(fields: [bankId], references: [id])
+  bankId    Int
+  account   Account      @relation(fields: [accountId], references: [id])
+  accountId Int
+}
