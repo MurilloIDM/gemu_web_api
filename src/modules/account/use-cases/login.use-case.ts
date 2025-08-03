@@ -1,10 +1,11 @@
 import jwt from "jsonwebtoken";
 
 import { env } from "../../../core/env";
+import { HttpError } from "../../../core/errors/http.error";
+import { HTTP_STATUS } from "../../../core/constants/http-status";
 import { TokenResponse } from "../../../core/dto/token-response.dto";
 
 import { IAccountRepository } from "../repositories/account.repository.interface";
-import { HttpError } from "../../../core/errors/http.error";
 
 export class LoginService {
   private readonly accountRepository: IAccountRepository;

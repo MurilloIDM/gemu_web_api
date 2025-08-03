@@ -24,4 +24,17 @@ export class AccountRepository implements IAccountRepository {
 
     return toDomain(account);
   }
+
+  async findById(id: number): Promise<Account | null> {
+    const account = await this.prisma.account.findUnique({
+      where: { id },
+    });
+
+    if (!account) {
+      return null;
+    }
+
+    account.password = "";
+    return toDomain(account);
+  }
 }
