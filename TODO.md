@@ -5,9 +5,9 @@
 - [] Implementar edição de movimentação
 - [] Implementar check de movimentação
 - [] Implementar deleção de movimentação
-- [] Implementar listagem, agrupada por banco, ordenada por tipo e filtrada por mês
+- [x] Implementar listagem, agrupada por banco, ordenada por tipo e filtrada por mês
 - [] Implementar resumo operacional agrupado por banco (retornar na listagem)
-- [] Implementar listagem de bancos
+- [x] Implementar listagem de bancos
 
 ## Atividades gerais
 
