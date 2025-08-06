@@ -145,3 +145,5 @@ dist
 /prisma/src/database/prisma
 
 /src/generated/prisma
+
+requests.http
