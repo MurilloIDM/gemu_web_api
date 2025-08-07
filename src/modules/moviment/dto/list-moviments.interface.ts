@@ -1,5 +1,16 @@
 import { Moviment } from "../../../domain/moviment.model";
 
-export interface ListMovimentsGroup {
-  [T: string]: Moviment[];
+interface ListMovimentsSummary {
+  totalInput: string;
+  totalOutput: string;
+  result: string;
+}
+
+interface ListMovimentsForBank {
+  summary: ListMovimentsSummary;
+  moviments: Moviment[];
+}
+
+export interface ListMoviments {
+  [T: string]: ListMovimentsForBank;
 }

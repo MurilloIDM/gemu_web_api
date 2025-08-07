@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { ListMovimentsGroup } from "../dto/list-moviments.interface";
+import { ListMoviments } from "../dto/list-moviments.interface";
 
 import { ListMovimentsUseCase } from "../use-cases/list-moviments.use-case";
 
@@ -14,7 +14,7 @@ export class ListMovimentsController {
   async handler(
     request: Request,
     response: Response
-  ): Promise<Response<ListMovimentsGroup>> {
+  ): Promise<Response<ListMoviments>> {
     try {
       const accountId = request.account.id;
       const month = Number(request.query.month);

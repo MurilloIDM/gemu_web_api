@@ -13,6 +13,7 @@ export class Moviment {
   period: string | null;
   pay_date: Date;
   value: string;
+  formatedValue: string;
   completed: boolean;
   type: MovimentTypeEnum;
   bank: Bank;
@@ -34,18 +35,15 @@ export class Moviment {
     this.period = period;
     this.pay_date = pay_date;
     this.value = value;
+    this.formatedValue = value;
     this.completed = completed;
     this.type = type;
     this.bank = bank;
     this.accountId = accountId;
   }
 
-  formatValue(): void {
-    this.value = currency(this.value).toString();
-  }
-
   formatValueInReal(): void {
-    this.value = currency(Number(this.value) || 0, {
+    this.formatedValue = currency(Number(this.formatedValue) || 0, {
       symbol: "R$ ",
       separator: ".",
       decimal: ",",
