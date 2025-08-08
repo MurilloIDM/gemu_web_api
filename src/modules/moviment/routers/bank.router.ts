@@ -8,6 +8,6 @@ export const bankRouter = Router();
 
 const listBanksController = makeListBanksController();
 
-bankRouter.get("/", authValidation, (request: Request, response: Response) => {
+bankRouter.get("", authValidation, (request: Request, response: Response) => {
   return listBanksController.handler(request, response);
 });

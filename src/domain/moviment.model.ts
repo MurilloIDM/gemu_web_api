@@ -31,8 +31,8 @@ export class Moviment {
     accountId: number
   ) {
     this.id = id;
-    this.description = description;
-    this.period = period;
+    this.description = String(description).toUpperCase();
+    this.period = String(period).toUpperCase();
     this.pay_date = pay_date;
     this.value = value;
     this.formatedValue = value;

@@ -6,4 +6,5 @@ export interface IMovimentRepository {
     startDate: Date,
     endDate: Date
   ): Promise<Moviment[]>;
+  createMoviment(data: Moviment): Promise<void>;
 }

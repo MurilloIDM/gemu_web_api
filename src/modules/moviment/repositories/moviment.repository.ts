@@ -36,4 +36,18 @@ export class MovimentRepository implements IMovimentRepository {
 
     return toDomainList(moviments);
   }
+
+  async createMoviment(data: Moviment): Promise<void> {
+    await this.prisma.moviment.create({
+      data: {
+        description: data?.description,
+        type: data?.type,
+        value: data?.value,
+        pay_date: data?.pay_date,
+        period: data?.period,
+        accountId: data?.accountId,
+        bankId: data?.bank?.id,
+      },
+    });
+  }
 }
