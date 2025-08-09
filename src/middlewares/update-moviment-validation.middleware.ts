@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import * as yup from "yup";
 
-const createMovimentRequestSchema = yup.object({
+const updateMovimentRequestSchema = yup.object({
   description: yup.string().required("O campo é obrigatório."),
   type: yup.string().required("O campo é obrigatório."),
   value: yup.string().required("O campo é obrigatório."),
@@ -14,13 +14,13 @@ const createMovimentRequestSchema = yup.object({
   }),
 });
 
-export const validateCreateMovimentRequestSchema = async (
+export const validateUpdateMovimentRequestSchema = async (
   request: Request,
   response: Response,
   next: NextFunction
 ) => {
   try {
-    await createMovimentRequestSchema.validate(request.body, {
+    await updateMovimentRequestSchema.validate(request.body, {
       abortEarly: false,
     });
     next();

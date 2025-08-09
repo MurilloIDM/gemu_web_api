@@ -10,6 +10,6 @@ export class CreateMovimentUseCase {
   }
 
   async execute(moviment: Moviment): Promise<void> {
-    await this.movimentRepository.createMoviment(moviment);
+    await this.movimentRepository.create(moviment);
   }
 }

@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 import { Moviment } from "../../../domain/moviment.model";
 
-import { toDomainList } from "../mappers/moviment.mapper";
+import { toDomain, toDomainList } from "../mappers/moviment.mapper";
 
 import { IMovimentRepository } from "./moviment.repository.interface";
 
@@ -37,8 +37,34 @@ export class MovimentRepository implements IMovimentRepository {
     return toDomainList(moviments);
   }
 
-  async createMoviment(data: Moviment): Promise<void> {
+  async create(data: Moviment): Promise<void> {
     await this.prisma.moviment.create({
+      data: {
+        description: data?.description,
+        type: data?.type,
+        value: data?.value,
+        pay_date: data?.pay_date,
+        period: data?.period,
+        accountId: data?.accountId,
+        bankId: data?.bank?.id,
+      },
+    });
+  }
+
+  async findById(id: number): Promise<Moviment | null> {
+    const moviment = await this.prisma.moviment.findUnique({
+      where: { id },
+      include: { bank: true },
+    });
+
+    if (!moviment) return null;
+
+    return toDomain(moviment);
+  }
+
+  async update(data: Moviment): Promise<void> {
+    await this.prisma.moviment.update({
+      where: { id: data?.id },
       data: {
         description: data?.description,
         type: data?.type,
