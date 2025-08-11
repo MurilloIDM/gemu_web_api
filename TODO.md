@@ -12,4 +12,4 @@
 
 - [x] Implementar validação na entrada dos dados
 - [x] Implementar tratamento global de exceção
-- [] Finalizar README.md
+- [x] Finalizar README.md
