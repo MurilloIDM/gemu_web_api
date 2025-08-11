@@ -76,4 +76,8 @@ export class MovimentRepository implements IMovimentRepository {
       },
     });
   }
+
+  async delete(id: number): Promise<void> {
+    await this.prisma.moviment.delete({ where: { id } });
+  }
 }

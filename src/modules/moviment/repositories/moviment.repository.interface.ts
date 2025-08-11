@@ -9,4 +9,5 @@ export interface IMovimentRepository {
   create(data: Moviment): Promise<void>;
   findById(id: number): Promise<Moviment | null>;
   update(data: Moviment): Promise<void>;
+  delete(id: number): Promise<void>;
 }
